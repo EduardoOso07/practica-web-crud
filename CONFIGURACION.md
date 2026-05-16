@@ -4,11 +4,11 @@
 
 | Software | Versión | Dónde descargar |
 
-| JDK | 17 o superior | https://www.oracle.com/java/technologies/downloads/ |
-| MySQL Server | 8.0+ | https://dev.mysql.com/downloads/mysql/ |
-| Apache Tomcat | 10+ | https://tomcat.apache.org/download-10.cgi |
-| NetBeans IDE | 12+ | https://netbeans.apache.org/ |
-| MySQL Workbench | 8.0+ | https://dev.mysql.com/downloads/workbench/ |
+- | JDK | 17 o superior | https://www.oracle.com/java/technologies/downloads/ |
+- | MySQL Server | 8.0+ | https://dev.mysql.com/downloads/mysql/ |
+- | Apache Tomcat | 10+ | https://tomcat.apache.org/download-10.cgi |
+- | NetBeans IDE | 12+ | https://netbeans.apache.org/ |
+- | MySQL Workbench | 8.0+ | https://dev.mysql.com/downloads/workbench/ |
 
 ## Paso 1: Instalar MySQL Server
 
@@ -19,8 +19,8 @@
 5. Anotar la contraseña - será necesaria más adelante
 6. Asegurarse que el servicio MySQL inicie automáticamente
 
-## Paso 2: Crear la base de datos
 
+## Paso 2: Crear la base de datos
 1. Abrir MySQL Workbench
 2. Conectarse a "Local instance MySQL" con la contraseña de root
 3. Ejecutar el siguiente script:
@@ -36,18 +36,19 @@ CREATE TABLE contactos (
     mail VARCHAR(100) NOT NULL
 );
 INSERT INTO contactos (nom, tel, dir, mail) VALUES 
-('Juan Perez', '555-1234', 'Calle Principal 123', 'juan@email.com');´´´
-
-## Paso 3: Configurar Apache Tomcat en NetBeans
-1.Abrir NetBeans
-2.Ir a Tools → Servers → Add Server
-3.Seleccionar "Apache Tomcat"
-4.Indicar la ruta de instalación de Tomcat
-5.Clic en "Finish"
+('Juan Perez', '555-1234', 'Calle Principal 123', 'juan@email.com');
+```
+---
+### Paso 3: Configurar Apache Tomcat en NetBeans
+1. Abrir NetBeans
+2. Ir a Tools → Servers → Add Server
+3. Seleccionar "Apache Tomcat"
+4. Indicar la ruta de instalación de Tomcat
+5. Clic en "Finish"
 
 ## Paso 4: Compilar la librería DBConnect
-1.Abrir el proyecto DBConnect en NetBeans
-2.Verificar/Corregir el archivo DbConnection.java:
+1. Abrir el proyecto DBConnect en NetBeans
+2. Verificar/Corregir el archivo DbConnection.java:
 
 ```java
 package DB;
@@ -63,21 +64,22 @@ public class DbConnection {
         Class.forName(DRIVER);
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
-}´´´
+}
+```
 
-3.Clic derecho en DBConnect → Clean and Build
-4.El archivo DBConnect.jar se genera en la carpeta dist/
+3. Clic derecho en DBConnect → Clean and Build
+4. El archivo DBConnect.jar se genera en la carpeta dist/
 
 
 ## Paso 5: Configurar el proyecto PracticaWEB
-1.Abrir el proyecto PracticaWEB en NetBeans
-2.Agregar DBConnect.jar a Libraries:
-    2.1 Clic derecho en Libraries → Add JAR/Folder...
-    2.2 Seleccionar DBConnect/dist/DBConnect.jar
-3.Agregar el driver de MySQL:
-    3.1 Descargar mysql-connector-j-9.5.0.jar
-    3.2 Clic derecho en Libraries → Add JAR/Folder...
-    3.3 Seleccionar el archivo descargado
+1. Abrir el proyecto PracticaWEB en NetBeans
+2. Agregar DBConnect.jar a Libraries:
+- Clic derecho en Libraries → Add JAR/Folder...
+- Seleccionar DBConnect/dist/DBConnect.jar
+3. Agregar el driver de MySQL:
+- Descargar mysql-connector-j-9.5.0.jar
+- Clic derecho en Libraries → Add JAR/Folder...
+- Seleccionar el archivo descargado
 
 ## Paso 6: Ejecutar la aplicación
 1. Clic derecho en PracticaWEB → Clean and Build
@@ -86,7 +88,7 @@ public class DbConnection {
 
 ## Posibles errores y soluciones
 Error	                        Solución
-Access denied for user 'root'|    Verificar contraseña en DbConnection.java
-ClassNotFoundException	|         Falta driver MySQL en Libraries
-Unknown database 'agenda'	|    Ejecutar script SQL en MySQL Workbench
-Tomcat no inicia	|            Verificar que el puerto 8080 esté libre
+- Access denied for user 'root'|    Verificar contraseña en DbConnection.java
+- ClassNotFoundException	|         Falta driver MySQL en Libraries
+- Unknown database 'agenda'	|    Ejecutar script SQL en MySQL Workbench
+- Tomcat no inicia	|            Verificar que el puerto 8080 esté libre
