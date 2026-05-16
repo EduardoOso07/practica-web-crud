@@ -36,7 +36,7 @@ CREATE TABLE contactos (
     mail VARCHAR(100) NOT NULL
 );
 INSERT INTO contactos (nom, tel, dir, mail) VALUES 
-('Juan Perez', '555-1234', 'Calle Principal 123', 'juan@email.com');
+('Juan Perez', '555-1234', 'Calle Principal 123', 'juan@email.com');```
 
 ## Paso 3: Configurar Apache Tomcat en NetBeans
 1.Abrir NetBeans
@@ -50,7 +50,7 @@ INSERT INTO contactos (nom, tel, dir, mail) VALUES
 2.Verificar/Corregir el archivo DbConnection.java:
 
 java
-package DB;
+```package DB;
 import java.sql.*;
 
 public class DbConnection {
@@ -63,7 +63,8 @@ public class DbConnection {
         Class.forName(DRIVER);
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
-}
+}```
+
 3.Clic derecho en DBConnect → Clean and Build
 4.El archivo DBConnect.jar se genera en la carpeta dist/
 
